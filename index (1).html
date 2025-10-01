@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ebrahim Raj - Developer Portfolio</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Configure Tailwind to use Inter font if available */
+        :root {
+            --font-inter: 'Inter', sans-serif;
+        }
+        body {
+            font-family: var(--font-inter);
+            min-height: 100vh;
+        }
+        /* Custom scrollbar style for dark mode aesthetics */
+        body::-webkit-scrollbar {
+            width: 8px;
+        }
+        body::-webkit-scrollbar-thumb {
+            background-color: #4b5563; /* Gray-600 */
+            border-radius: 10px;
+        }
+        body::-webkit-scrollbar-track {
+            background-color: #1f2937; /* Gray-800 */
+        }
+        /* Enhanced Project Card Hover Effect */
+        .project-card {
+            transition: all 0.3s ease;
+        }
+        .project-card:hover {
+            transform: translateY(-8px); /* Deeper lift */
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+        /* Style for form messages */
+        .success {
+            color: #34d399; /* Green-400 */
+        }
+        .error {
+            color: #f87171; /* Red-400 */
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#6366f1', // Indigo-500
+                        'secondary': '#1f2937', // Gray-800
+                        'tertiary': '#374151', // Gray-700
+                    },
+                    animation: {
+                        'hero-fade': 'fadeIn 1s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-900 text-gray-100 antialiased">
+
+    <!-- Navigation Header -->
+    <header id="header" class="sticky top-0 z-50 bg-gray-900/95 backdrop-blur-sm shadow-xl border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-primary">Ebrahim Raj<span class="text-gray-400">.dev</span></h1>
+            <nav class="hidden md:flex space-x-6 lg:space-x-8 font-medium" id="desktop-nav">
+                <a href="#about" class="nav-link hover:text-primary transition duration-300">About</a>
+                <!-- UPDATED: Renamed link text and target ID -->
+                <a href="#expertise" class="nav-link hover:text-primary transition duration-300">My Core Expertise</a>
+                <a href="#projects" class="nav-link hover:text-primary transition duration-300">Projects</a>
+                <a href="#services" class="nav-link hover:text-primary transition duration-300">Services</a>
+                <!-- REMOVED: Pricing link -->
+                <a href="#testimonials" class="nav-link hover:text-primary transition duration-300">Feedback</a>
+                <a href="#contact" class="nav-link hover:text-primary transition duration-300">Contact</a>
+            </nav>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden text-gray-100 hover:text-primary transition duration-300 p-2 rounded-lg">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay (Hidden by default) -->
+    <div id="mobile-menu-overlay" class="fixed inset-0 bg-gray-900/95 z-[51] transition-opacity duration-300 opacity-0 pointer-events-none md:hidden">
+        <div class="flex justify-end p-4">
+            <button id="close-menu-button" class="text-gray-100 hover:text-primary transition duration-300 p-2 rounded-lg">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+        </div>
+        <nav id="mobile-nav" class="flex flex-col space-y-6 items-center text-xl font-medium pt-10">
+            <a href="#about" class="mobile-nav-link hover:text-primary transition duration-300 py-2">About</a>
+            <!-- UPDATED: Renamed link text and target ID -->
+            <a href="#expertise" class="mobile-nav-link hover:text-primary transition duration-300 py-2">My Core Expertise</a>
+            <a href="#projects" class="mobile-nav-link hover:text-primary transition duration-300 py-2">Projects</a>
+            <a href="#services" class="mobile-nav-link hover:text-primary transition duration-300 py-2">Services</a>
+            <!-- REMOVED: Pricing link -->
+            <a href="#testimonials" class="mobile-nav-link hover:text-primary transition duration-300 py-2">Feedback</a>
+            <a href="#contact" class="mobile-nav-link hover:text-primary transition duration-300 py-2">Contact</a>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="about" class="py-20 md:py-32 text-center max-w-4xl mx-auto px-4 relative overflow-hidden">
+            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-primary)_0%,_transparent_70%)] opacity-5 z-0"></div>
+            <div class="relative z-10 animate-hero-fade">
+                <p class="text-base text-primary uppercase tracking-widest mb-3">Hello, I'm</p>
+                <h2 class="text-5xl sm:text-7xl font-extrabold mb-6 leading-tight bg-clip-text text-transparent bg-gradient-to-r from-gray-50 to-primary">
+                    Ebrahim Raj
+                </h2>
+                <h3 class="text-2xl sm:text-3xl font-light text-gray-400 mb-8">
+                    The Bridge Between 
+                    <span class="font-semibold text-indigo-400">Discord</span>, 
+                    <span class="font-semibold text-green-400">Web</span>, & 
+                    <span class="font-semibold text-red-400">Minecraft</span> 
+                    Ecosystems.
+                </h3>
+                <p class="text-xl text-gray-300 max-w-2xl mx-auto mb-10">
+                    I’m passionate about creating powerful Discord bots, sleek websites, and fully customized Minecraft servers. My focus is on delivering projects that are user-friendly, optimized, and built to last.
+                </p>
+                <div class="flex justify-center space-x-4">
+                    <a href="#projects" class="nav-link inline-flex items-center px-8 py-3 bg-primary text-gray-900 font-bold rounded-xl shadow-lg shadow-primary/30 hover:bg-indigo-600 transition duration-300 transform hover:scale-[1.02] ring-4 ring-primary/50">
+                        View Projects
+                    </a>
+                    <a href="#contact" class="nav-link inline-flex items-center px-8 py-3 border-2 border-primary text-primary font-bold rounded-xl hover:bg-primary/10 transition duration-300 transform hover:scale-[1.02]">
+                        Hire Me
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Expertise (Skills) Section - UPDATED ID and TITLE -->
+        <section id="expertise" class="py-16 bg-secondary/50 border-t border-b border-gray-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- UPDATED: Renamed section title -->
+                <h2 class="text-4xl font-bold text-center mb-12">My Core Expertise</h2>
+                
+                <!-- Updated grid to support 4 columns on large screens -->
+                <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+
+                    <!-- Discord Bot Development (Card 1) -->
+                    <div class="bg-tertiary p-6 rounded-xl shadow-2xl border border-gray-700 hover:border-primary transition duration-300 transform hover:shadow-primary/30">
+                        <div class="text-primary mb-4 flex items-center">
+                            <i data-lucide="message-square" class="w-8 h-8 mr-3"></i>
+                            <h3 class="text-xl font-semibold">Discord Bot Development</h3>
+                        </div>
+                        <p class="text-gray-400 mb-4 text-sm">
+                            Building reliable, feature-rich bots for moderation, economy systems, ticket support, and custom dashboards.
+                        </p>
+                        <div class="mt-4">
+                            <h4 class="text-sm font-bold text-primary mb-2">Key Stack</h4>
+                            <div class="flex flex-wrap gap-2 text-xs">
+                                <span class="bg-primary/20 text-primary px-3 py-1 rounded-full font-medium">Python (Discord.py)</span>
+                                <span class="bg-primary/20 text-primary px-3 py-1 rounded-full font-medium">Node.js (Discord.js)</span>
+                                <span class="bg-primary/20 text-primary px-3 py-1 rounded-full font-medium">Slash Commands</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Website Development (Card 2) -->
+                    <div class="bg-tertiary p-6 rounded-xl shadow-2xl border border-gray-700 hover:border-green-500 transition duration-300 transform hover:shadow-green-500/30">
+                        <div class="text-green-500 mb-4 flex items-center">
+                            <i data-lucide="code" class="w-8 h-8 mr-3"></i>
+                            <h3 class="text-xl font-semibold">Modern Web Development</h3>
+                        </div>
+                        <p class="text-gray-400 mb-4 text-sm">
+                            Crafting dynamic and responsive frontends and reliable backend systems for community dashboards and e-commerce stores.
+                        </p>
+                        <div class="mt-4">
+                            <h4 class="text-sm font-bold text-green-500 mb-2">Key Stack</h4>
+                            <div class="flex flex-wrap gap-2 text-xs">
+                                <span class="bg-green-500/20 text-green-500 px-3 py-1 rounded-full font-medium">React / Next.js</span>
+                                <span class="bg-green-500/20 text-green-500 px-3 py-1 rounded-full font-medium">Tailwind CSS</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Minecraft Server Development (Card 3) -->
+                    <div class="bg-tertiary p-6 rounded-xl shadow-2xl border border-gray-700 hover:border-red-500 transition duration-300 transform hover:shadow-red-500/30">
+                        <div class="text-red-500 mb-4 flex items-center">
+                            <i data-lucide="server" class="w-8 h-8 mr-3"></i>
+                            <h3 class="text-xl font-semibold">Custom Minecraft Solutions</h3>
+                        </div>
+                        <p class="text-gray-400 mb-4 text-sm">
+                            Custom plugin development (Java), Skript creation, server optimization, and multi-server network management.
+                        </p>
+                        <div class="mt-4">
+                            <h4 class="text-sm font-bold text-red-500 mb-2">Key Stack</h4>
+                            <div class="flex flex-wrap gap-2 text-xs">
+                                <span class="bg-red-500/20 text-red-500 px-3 py-1 rounded-full font-medium">Java / Skript</span>
+                                <span class="bg-red-500/20 text-red-500 px-3 py-1 rounded-full font-medium">Paper / Spigot API</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- NEW: VPS Management & Hosting (Card 4) -->
+                    <div class="bg-tertiary p-6 rounded-xl shadow-2xl border border-gray-700 hover:border-yellow-500 transition duration-300 transform hover:shadow-yellow-500/30">
+                        <div class="text-yellow-500 mb-4 flex items-center">
+                            <i data-lucide="cloud" class="w-8 h-8 mr-3"></i>
+                            <h3 class="text-xl font-semibold">VPS Management & Hosting</h3>
+                        </div>
+                        <p class="text-gray-400 mb-4 text-sm">
+                            Expert **server hosting developer** focused on security, uptime, and performance for dedicated resources, including **VPS/VDS management** and **RDP hosting**.
+                        </p>
+                        <div class="mt-4">
+                            <h4 class="text-sm font-bold text-yellow-500 mb-2">Key Stack</h4>
+                            <div class="flex flex-wrap gap-2 text-xs">
+                                <span class="bg-yellow-500/20 text-yellow-500 px-3 py-1 rounded-full font-medium">Linux Server Management</span>
+                                <span class="bg-yellow-500/20 text-yellow-500 px-3 py-1 rounded-full font-medium">Docker</span>
+                                <span class="bg-yellow-500/20 text-yellow-500 px-3 py-1 rounded-full font-medium">Networking & Security</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Database & Core Tools section (retained for other tools) -->
+                <div class="max-w-4xl mx-auto p-6 rounded-xl bg-gray-800 border border-gray-700">
+                    <h4 class="text-xl font-bold text-center mb-4 text-gray-100">Database & Core Tools</h4>
+                    <div class="flex flex-wrap justify-center gap-4 text-sm">
+                        <span class="bg-gray-700 text-gray-300 px-4 py-1 rounded-full font-medium">MySQL</span>
+                        <span class="bg-gray-700 text-gray-300 px-4 py-1 rounded-full font-medium">MongoDB / Firestore</span>
+                        <span class="bg-gray-700 text-gray-300 px-4 py-1 rounded-full font-medium">Git / Version Control</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-bold text-center mb-12">Projects</h2>
+                <!-- Adjusted grid for 4 projects (2x2 on desktop) -->
+                <div class="grid md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-8">
+
+                    <!-- Project 1: FrostCraft Store (Web/Minecraft Integration) -->
+                    <div class="project-card bg-tertiary rounded-xl shadow-2xl p-6 transition duration-300 border border-gray-700 hover:border-red-500">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <i data-lucide="shopping-bag" class="w-6 h-6 text-red-500"></i>
+                            <h3 class="text-xl font-semibold text-gray-100">FrostCraft Store</h3>
+                        </div>
+                        <p class="text-gray-400 mb-4 text-sm">
+                            A custom Minecraft server store integration featuring automated Discord rank synchronization and role assignment upon purchase.
+                        </p>
+                        <div class="flex flex-wrap gap-2 text-xs">
+                            <span class="bg-green-500/20 text-green-500 px-3 py-1 rounded-full font-medium">Web Development</span>
+                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full font-medium">Discord API</span>
+                            <span class="bg-red-500/20 text-red-500 px-3 py-1 rounded-full font-medium">MySQL</span>
+                        </div>
+                        <a href="#" class="mt-4 block text-red-500 hover:underline font-medium text-sm">View Demo &rarr;</a>
+                    </div>
+
+                    <!-- Project 2: GuardianBot (Discord) -->
+                    <div class="project-card bg-tertiary rounded-xl shadow-2xl p-6 transition duration-300 border border-gray-700 hover:border-primary">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <i data-lucide="shield-check" class="w-6 h-6 text-primary"></i>
+                            <h3 class="text-xl font-semibold text-gray-100">GuardianBot</h3>
+                        </div>
+                        <p class="text-gray-400 mb-4 text-sm">
+                            A powerful, all-in-one Discord utility bot with advanced moderation, automod, comprehensive economy features, and a ticket system/dashboard.
+                        </p>
+                        <div class="flex flex-wrap gap-2 text-xs">
+                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full font-medium">Discord.js</span>
+                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full font-medium">MongoDB</span>
+                            <span class="bg-green-500/20 text-green-500 px-3 py-1 rounded-full font-medium">React Dashboard</span>
+                        </div>
+                        <a href="#" class="mt-4 block text-primary hover:underline font-medium text-sm">View Live &rarr;</a>
+                    </div>
+
+                    <!-- Project 3: NetherCraft Network (Minecraft Network) -->
+                    <div class="project-card bg-tertiary rounded-xl shadow-2xl p-6 transition duration-300 border border-gray-700 hover:border-red-500">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <i data-lucide="globe" class="w-6 h-6 text-red-500"></i>
+                            <h3 class="text-xl font-semibold text-gray-100">NetherCraft Network</h3>
+                        </div>
+                        <p class="text-gray-400 mb-4 text-sm">
+                            Development and optimization of a large multi-server Minecraft network (Survival, PvP, Minigames) with custom Java plugins for high performance.
+                        </p>
+                        <div class="flex flex-wrap gap-2 text-xs">
+                            <span class="bg-red-500/20 text-red-500 px-3 py-1 rounded-full font-medium">Java</span>
+                            <span class="bg-red-500/20 text-red-500 px-3 py-1 rounded-full font-medium">BungeeCord/Velocity</span>
+                            <span class="bg-red-500/20 text-red-500 px-3 py-1 rounded-full font-medium">Server Optimization</span>
+                        </div>
+                        <a href="#" class="mt-4 block text-red-500 hover:underline font-medium text-sm">Network Details &rarr;</a>
+                    </div>
+                    
+                    <!-- Project 4: Custom Websites (Web) -->
+                    <div class="project-card bg-tertiary rounded-xl shadow-2xl p-6 transition duration-300 border border-gray-700 hover:border-green-500">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <i data-lucide="layout-grid" class="w-6 h-6 text-green-500"></i>
+                            <h3 class="text-xl font-semibold text-gray-100">Custom Websites</h3>
+                        </div>
+                        <p class="text-gray-400 mb-4 text-sm">
+                            Various commissions including high-converting landing pages, user dashboards, and custom payment/store integrations for online communities.
+                        </p>
+                        <div class="flex flex-wrap gap-2 text-xs">
+                            <span class="bg-green-500/20 text-green-500 px-3 py-1 rounded-full font-medium">Next.js</span>
+                            <span class="bg-green-500/20 text-green-500 px-3 py-1 rounded-full font-medium">Tailwind CSS</span>
+                            <span class="bg-primary/20 text-primary px-3 py-1 rounded-full font-medium">Integrations</span>
+                        </div>
+                        <a href="#" class="mt-4 block text-green-500 hover:underline font-medium text-sm">View Case Studies &rarr;</a>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Services & Workflow Section -->
+        <section id="services" class="py-20 bg-gray-800 border-t border-b border-gray-700">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <h2 class="text-4xl font-bold text-center mb-12">Services & Workflow</h2>
+                
+                <div class="grid lg:grid-cols-2 gap-12">
+                    <!-- Services Offered -->
+                    <div class="bg-tertiary p-8 rounded-xl shadow-2xl border border-gray-700">
+                        <h3 class="text-2xl font-bold text-primary mb-5 flex items-center">
+                            <i data-lucide="package-search" class="w-6 h-6 mr-3"></i> Services Offered
+                        </h3>
+                        <ul class="space-y-4 text-gray-300">
+                            <li class="flex items-start">
+                                <i data-lucide="message-square" class="w-5 h-5 mt-1 mr-3 text-indigo-400 flex-shrink-0"></i>
+                                <div>
+                                    <strong class="text-gray-100">Discord Bot Development:</strong> Custom features, administration dashboards, and API integrations.
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-lucide="monitor" class="w-5 h-5 mt-1 mr-3 text-green-400 flex-shrink-0"></i>
+                                <div>
+                                    <strong class="text-gray-100">Website Development:</strong> Landing pages, dashboards, and custom payment/store systems.
+                                </div>
+                            </li>
+                            <!-- Server Hosting & Infrastructure is already up-to-date here -->
+                            <li class="flex items-start">
+                                <i data-lucide="hard-drive" class="w-5 h-5 mt-1 mr-3 text-yellow-400 flex-shrink-0"></i>
+                                <div>
+                                    <strong class="text-gray-100">Advanced Server Hosting & Infrastructure:</strong> Expert setup and management of **VPS/VDS**, including **RDP hosting for developers**, and highly optimized bare-metal servers for Minecraft/Docker environments.
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-lucide="axe" class="w-5 h-5 mt-1 mr-3 text-red-400 flex-shrink-0"></i>
+                                <div>
+                                    <strong class="text-100">Minecraft Development & Optimization:</strong> Custom plugins, Skript, and optimized Bungee/Velocity configurations.
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <i data-lucide="link" class="w-5 h-5 mt-1 mr-3 text-primary flex-shrink-0"></i>
+                                <div>
+                                    <strong class="text-gray-100">Ecosystem Integrations:</strong> Seamless Discord ⇄ Minecraft sync, payment system automation, and more.
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Workflow -->
+                    <div class="bg-tertiary p-8 rounded-xl shadow-2xl border border-gray-700">
+                        <h3 class="text-2xl font-bold text-primary mb-5 flex items-center">
+                            <i data-lucide="git-branch" class="w-6 h-6 mr-3"></i> My Workflow
+                        </h3>
+                        <ol class="space-y-4 text-gray-300">
+                            <li class="flex items-start">
+                                <span class="text-xl font-extrabold text-primary mr-3 flex-shrink-0">1.</span>
+                                <div>
+                                    <strong class="text-gray-100">Discovery:</strong> Detailed discussion of ideas, goals, and technical requirements.
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-xl font-extrabold text-primary mr-3 flex-shrink-0">2.</span>
+                                <div>
+                                    <strong class="text-gray-100">Planning:</strong> Creating clear milestones, wireframes (if applicable), and establishing the technology stack.
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-xl font-extrabold text-primary mr-3 flex-shrink-0">3.</span>
+                                <div>
+                                    <strong class="text-gray-100">Development:</strong> Iterative coding with regular check-ins and early demos for feedback.
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-xl font-extrabold text-primary mr-3 flex-shrink-0">4.</span>
+                                <div>
+                                    <strong class="text-gray-100">Deployment:</strong> Rigorous testing, final bug fixes, and secure deployment to production.
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-xl font-extrabold text-primary mr-3 flex-shrink-0">5.</span>
+                                <div>
+                                    <strong class="text-gray-100">Delivery:</strong> Full source code, complete documentation, and post-launch support.
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="py-20 bg-secondary/50 border-t border-b border-gray-800">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-4xl font-bold mb-12">Client Feedback</h2>
+                
+                <!-- UPDATED: Using a responsive grid (2x2 layout on desktop) -->
+                <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+                    <!-- Testimonial 1 -->
+                    <div class="bg-tertiary p-6 rounded-xl shadow-lg border-2 border-primary/30 transform transition duration-300 hover:scale-[1.03]">
+                        <i data-lucide="quote" class="w-6 h-6 text-primary mb-3 mx-auto"></i>
+                        <p class="text-gray-300 italic mb-4 text-sm">
+                            "Ebrahim delivered a complex Discord bot that perfectly integrated with our Minecraft server economy. The stability and documentation were top-notch. Highly recommend his multi-platform approach!"
+                        </p>
+                        <p class="text-xs font-semibold text-gray-100">- Sarah K., Community Manager</p>
+                    </div>
+                    
+                    <!-- Testimonial 2 -->
+                    <div class="bg-tertiary p-6 rounded-xl shadow-lg border-2 border-primary/30 transform transition duration-300 hover:scale-[1.03]">
+                        <i data-lucide="quote" class="w-6 h-6 text-primary mb-3 mx-auto"></i>
+                        <p class="text-gray-300 italic mb-4 text-sm">
+                            "The web application Ebrahim built for us is fast, modern, and completely responsive. He handled the Firebase integration flawlessly and was incredibly communicative throughout the process."
+                        </p>
+                        <p class="text-xs font-semibold text-gray-100">- David L., Startup Founder</p>
+                    </div>
+
+                    <!-- Testimonial 3: Web/Next.js Focus -->
+                    <div class="bg-tertiary p-6 rounded-xl shadow-lg border-2 border-primary/30 transform transition duration-300 hover:scale-[1.03]">
+                        <i data-lucide="quote" class="w-6 h-6 text-primary mb-3 mx-auto"></i>
+                        <p class="text-300 italic mb-4 text-sm">
+                            "Ebrahim quickly built our community dashboard using Next.js and Tailwind. The responsiveness and clean, modern design exceeded our expectations. It's incredibly fast and smooth."
+                        </p>
+                        <p class="text-xs font-semibold text-gray-100">- Mark J., Tech Lead</p>
+                    </div>
+
+                    <!-- Testimonial 4: Minecraft Optimization Focus -->
+                    <div class="bg-tertiary p-6 rounded-xl shadow-lg border-2 border-primary/30 transform transition duration-300 hover:scale-[1.03]">
+                        <i data-lucide="quote" class="w-6 h-6 text-primary mb-3 mx-auto"></i>
+                        <p class="text-gray-300 italic mb-4 text-sm">
+                            "Our Minecraft server was constantly lagging, but Ebrahim's optimization work and custom Skripts made a massive difference. The performance increase was immediate and the server has been totally stable."
+                        </p>
+                        <p class="text-xs font-semibold text-gray-100">- Alex B., Server Owner</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 bg-secondary border-t border-gray-800">
+            <div class="max-w-xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-4xl font-bold mb-4">Let's Build Something Great.</h2>
+                <p class="text-gray-400 mb-8 text-lg">
+                    Have a project in mind, or just want to chat about development? Use the form below or reach out instantly.
+                </p>
+
+                <!-- Contact Form (with new fields and async submission handler) -->
+                <form id="contact-form" action="https://formspree.io/f/xnngdwer" method="POST" class="mt-6 bg-tertiary p-6 rounded-xl shadow-2xl border border-gray-700">
+                    <!-- IMPORTANT: Replace the 'xnngdwer' ID above with your actual Formspree endpoint ID! -->
+                    
+                    <input type="text" id="contact-name" name="name" placeholder="Your Name" class="w-full p-3 mb-4 rounded-lg bg-gray-800 border border-gray-700 text-gray-100 focus:ring-primary focus:border-primary focus:outline-none" required>
+                    <input type="email" id="contact-email" name="email" placeholder="Your Email" class="w-full p-3 mb-4 rounded-lg bg-gray-800 border border-gray-700 text-gray-100 focus:ring-primary focus:border-primary focus:outline-none" required>
+                    
+                    <!-- UPDATED FIELD 1: WhatsApp Number (removed optional) -->
+                    <input type="tel" id="contact-whatsapp" name="whatsapp_number" placeholder="WhatsApp Number" class="w-full p-3 mb-4 rounded-lg bg-gray-800 border border-gray-700 text-gray-100 focus:ring-primary focus:border-primary focus:outline-none">
+                    
+                    <!-- UPDATED FIELD 2: Discord Username (removed optional) -->
+                    <input type="text" id="contact-discord" name="discord_username" placeholder="Discord Username" class="w-full p-3 mb-4 rounded-lg bg-gray-800 border border-gray-700 text-gray-100 focus:ring-primary focus:border-primary focus:outline-none">
+
+                    <!-- Message Area - UPDATED: Placeholder text changed from "Your Message" to "About Your Project" -->
+                    <textarea id="contact-message" name="message" placeholder="About Your Project (e.g., Discord Bot features, Website requirements, Minecraft server setup details)" rows="4" class="w-full p-3 mb-6 rounded-lg bg-gray-800 border border-gray-700 text-gray-100 focus:ring-primary focus:border-primary focus:outline-none" required></textarea>
+                    
+                    <!-- Formspree hidden fields for a better experience -->
+                    <input type="hidden" name="_subject" value="New Project Inquiry from Ebrahim Raj Portfolio" />
+                    
+                    <button type="submit" id="send-button" class="w-full px-4 py-3 bg-primary text-gray-900 font-bold rounded-lg shadow-xl shadow-primary/30 hover:bg-indigo-600 transition duration-300 transform hover:scale-[1.01] flex items-center justify-center space-x-2">
+                        <span>Send Message</span>
+                        <i data-lucide="send" class="w-4 h-4"></i>
+                    </button>
+                    <!-- Message container for success/error feedback -->
+                    <div id="form-message" class="mt-4 text-center text-sm font-semibold opacity-0 transition duration-300"></div>
+                </form>
+
+                <!-- Quick Contact Alternatives: Discord, WhatsApp, Email -->
+                <div class="mt-8 pt-6 border-t border-gray-700">
+                    <p class="text-lg font-semibold text-gray-100 mb-6">Prefer a quick chat? Message me instantly:</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <!-- Discord Button (Using user's provided ID) -->
+                        <div>
+                            <a href="https://discord.com/users/1198562843402969128" target="_blank" class="w-full inline-flex items-center justify-center px-4 py-3 bg-[#5865F2] text-white font-bold rounded-xl transition duration-300 hover:bg-[#4d57d6] transform hover:scale-[1.01] shadow-lg shadow-[#5865F2]/30 text-sm sm:text-base">
+                                <i data-lucide="messages-square" class="w-5 h-5 mr-2"></i>
+                                <span>Discord Chat</span>
+                            </a>
+                        </div>
+                        <!-- WhatsApp Button (Placeholder number needs update) -->
+                        <div>
+                            <a href="https://wa.me/YOUR_WHATSAPP_NUMBER" target="_blank" class="w-full inline-flex items-center justify-center px-4 py-3 bg-green-500 text-gray-900 font-bold rounded-xl transition duration-300 hover:bg-green-600 transform hover:scale-[1.01] shadow-lg shadow-green-500/30 text-sm sm:text-base">
+                                <i data-lucide="phone" class="w-5 h-5 mr-2"></i>
+                                <span>WhatsApp Chat</span>
+                            </a>
+                        </div>
+                        <!-- Email Button -->
+                        <div>
+                            <a href="mailto:ebrahimraj084@gmail.com" class="w-full inline-flex items-center justify-center px-4 py-3 bg-primary text-gray-900 font-bold rounded-xl transition duration-300 hover:bg-indigo-600 transform hover:scale-[1.01] shadow-lg shadow-primary/30 text-sm sm:text-base">
+                                <i data-lucide="mail" class="w-5 h-5 mr-2"></i>
+                                <span>Direct Email</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 py-8 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 text-center text-gray-500 text-sm">
+            &copy; 2025 Ebrahim Raj. All rights reserved. <i data-lucide="heart" class="inline w-3 h-3 text-red-500 fill-red-500"></i> 
+        </div>
+    </footer>
+
+    <!-- Initialize Lucide Icons & Interactivity -->
+    <script>
+        lucide.createIcons();
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const closeMenuButton = document.getElementById('close-menu-button');
+            const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+            const navLinks = document.querySelectorAll('.nav-link, .mobile-nav-link');
+            const contactForm = document.getElementById('contact-form');
+            const formMessage = document.getElementById('form-message');
+            const sendButton = document.getElementById('send-button');
+            
+            // --- Mobile Menu Toggle Logic ---
+            const toggleMenu = (show) => {
+                if (show) {
+                    mobileMenuOverlay.classList.remove('opacity-0', 'pointer-events-none');
+                    mobileMenuOverlay.classList.add('opacity-100');
+                    document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
+                } else {
+                    mobileMenuOverlay.classList.remove('opacity-100');
+                    mobileMenuOverlay.classList.add('opacity-0', 'pointer-events-none');
+                    document.body.style.overflow = ''; // Restore scrolling
+                }
+            };
+
+            mobileMenuButton.addEventListener('click', () => toggleMenu(true));
+            closeMenuButton.addEventListener('click', () => toggleMenu(false));
+
+            // Close mobile menu when a link is clicked
+            document.querySelectorAll('.mobile-nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    toggleMenu(false);
+                });
+            });
+
+
+            // --- Smooth Scroll Logic ---
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Handle scrolling
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        // Get the height of the fixed header for offset
+                        const headerHeight = document.getElementById('header').offsetHeight;
+                        
+                        // Calculate position, ensuring we scroll slightly below the fixed header
+                        const targetPosition = targetElement.offsetTop - headerHeight;
+
+                        window.scrollTo({
+                            top: targetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // --- Contact Form Submission Handler ---
+            contactForm.addEventListener('submit', async function(event) {
+                event.preventDefault();
+                
+                // Clear previous message
+                formMessage.classList.remove('success', 'error', 'opacity-100');
+                formMessage.classList.add('opacity-0');
+                formMessage.textContent = 'Sending...';
+                sendButton.disabled = true;
+
+                const form = event.target;
+                const data = new FormData(form);
+                const url = form.action;
+
+                try {
+                    const response = await fetch(url, {
+                        method: form.method,
+                        body: data,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+
+                    formMessage.classList.remove('opacity-0');
+                    formMessage.classList.add('opacity-100');
+
+                    if (response.ok) {
+                        formMessage.textContent = 'Message sent successfully! I will be in touch soon.';
+                        formMessage.classList.add('success');
+                        form.reset(); // Clear form fields on success
+                    } else {
+                        // Get error details from Formspree response if possible
+                        const responseData = await response.json();
+                        if (responseData.error) {
+                            formMessage.textContent = `Error: ${responseData.error}. Please try again later or use the quick links.`;
+                        } else {
+                            formMessage.textContent = 'Failed to send message. Please check your Formspree setup.';
+                        }
+                        formMessage.classList.add('error');
+                    }
+                } catch (error) {
+                    formMessage.classList.remove('opacity-0');
+                    formMessage.classList.add('opacity-100', 'error');
+                    formMessage.textContent = 'A network error occurred. Please check your connection.';
+                    console.error('Submission error:', error);
+                } finally {
+                    sendButton.disabled = false;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
